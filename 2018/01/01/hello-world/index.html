@@ -81,8 +81,8 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/01/01/hello-world/" data-id="ckbz2slim0000r5e23rvendqb" class="article-share-link">
-                                            Partager
+                                        <a data-url="http://yoursite.com/2018/01/01/hello-world/" data-id="ckbz3ab0w00006pe2aqj4uwtm" class="article-share-link">
+                                            Teilen
                                         </a>
                                         
                                     </footer>
@@ -94,7 +94,7 @@
   <nav class="article-nav">
     
       <a href="/2018/01/01/test/" class="article-nav-link">
-        <strong class="article-nav-caption">Récent</strong>
+        <strong class="article-nav-caption">Neuer</strong>
         <div class="article-nav-title">
           
             test
@@ -111,6 +111,26 @@
                 
                     
                         
+  <div class="gitalk" id="gitalk-container"></div>
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '73c0134ebd501d7b27d1',
+      clientSecret: 'b34bcc557eb4cfd04480b335f7159209a3549638',
+      repo: 'gitalk',
+      owner: '',
+      admin: [''],
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: md5(location.pathname),
+      distractionFreeMode: false,  // Facebook-like distraction free mode
+      pagerDirection: 'last'
+    })
+
+  gitalk.render('gitalk-container')
+  </script>
+
                             
 
 </article>
@@ -128,7 +148,7 @@
     </div>
     <ul class="list-inline">
       <li>&copy; 2020 Hexo</li>
-      <li>Propulsé par <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
     </ul>
   </div>
@@ -146,25 +166,25 @@
   <ul class="nav nav-main">
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/">Home</a>
+        <a class="nav-item-link" href="/">主页</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/archives">Archives</a>
+        <a class="nav-item-link" href="/archives">归档</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">Gallery</a>
+        <a class="nav-item-link" href="/gallery">相册</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-item-link" href="/about">About</a>
+        <a class="nav-item-link" href="/about">关于</a>
       </li>
     
     <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Rechercher">
+      <a class="nav-item-link nav-item-search" title="Suche">
         <i class="fe fe-search"></i>
-        Rechercher
+        Suche
       </a>
     </li>
   </ul>
@@ -178,7 +198,7 @@
     </li>
     <li class="nav-item">
       
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="Flux RSS">
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
           <i class="fe fe-feed"></i>
         </a>
       
