@@ -340,21 +340,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">3</a></span>
+    <span class="count"><a href="/">4</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">1</a></span>
+    <span class="count"><a href="/categories">3</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">2</a></span>
+    <span class="count"><a href="/tags">6</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -370,21 +370,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">3</a></span>
+    <span class="count"><a href="/">4</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">1</a></span>
+    <span class="count"><a href="/categories">3</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">2</a></span>
+    <span class="count"><a href="/tags">6</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -528,7 +528,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,0],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -570,7 +570,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"Diary","value":1}],
+                data: [{"name":"hexo","value":1},{"name":"Redis","value":1},{"name":"Diary","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -594,7 +594,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["这事一个测试的","测试的"]
+                data: ["hexo","文档","Redis","Redis 的基础","介绍","开始"]
             }
         ],
         yAxis: [
@@ -607,7 +607,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [1,1],
+                data: [1,1,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -636,58 +636,6 @@
     tagsChart.setOption(tagsOption);
 </script>
 
-
-                
-                
-<div class="my-projects">
-    <div class="title center-align" data-aos="zoom-in-up">
-        <i class="fas fa-gift"></i>&nbsp;&nbsp;我的项目
-    </div>
-    <div class="row">
-        
-        
-        <div class="col s12 m6 l4" data-aos="fade-up">
-            <div class="info center-align">
-                <a href="http://github.com/blinkfox/hexo-theme-matery" class="icon"
-                   style="background: linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)" target="_blank">
-                    <i class="fas fa-file-alt"></i>
-                </a>
-                <div class="info-title">
-                    <a href="http://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>
-                </div>
-                <div class="info-desc">This is a Hexo blog theme with &#39;Material Design&#39; and responsive design.</div>
-            </div>
-        </div>
-        
-        <div class="col s12 m6 l4" data-aos="fade-up">
-            <div class="info center-align">
-                <a href="https://github.com/blinkfox/fenix" class="icon"
-                   style="background: linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)" target="_blank">
-                    <i class="fas fa-database"></i>
-                </a>
-                <div class="info-title">
-                    <a href="https://github.com/blinkfox/fenix" target="_blank">Fenix</a>
-                </div>
-                <div class="info-desc">这是 Spring Data JPA 复杂或动态 SQL 查询的扩展库。</div>
-            </div>
-        </div>
-        
-        <div class="col s12 m6 l4" data-aos="fade-up">
-            <div class="info center-align">
-                <a href="https://github.com/blinkfox/typora-vue-theme" class="icon"
-                   style="background: linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)" target="_blank">
-                    <i class="fas fa-file-alt"></i>
-                </a>
-                <div class="info-title">
-                    <a href="https://github.com/blinkfox/typora-vue-theme" target="_blank">typora-vue-theme</a>
-                </div>
-                <div class="info-desc">This is a typora theme inspired by Vue document style.</div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
 
                 
 
@@ -799,14 +747,38 @@
         <div class="tag-chips center-align">
             
             
-            <a href="/tags/这事一个测试的/">
-                <span class="chip center-align waves-effect waves-light chip-default">这事一个测试的</span>
+            <a href="/tags/hexo/">
+                <span class="chip center-align waves-effect waves-light chip-default">hexo</span>
             </a>
             
             
             
-            <a href="/tags/测试的/">
-                <span class="chip center-align waves-effect waves-light chip-default">测试的</span>
+            <a href="/tags/文档/">
+                <span class="chip center-align waves-effect waves-light chip-default">文档</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Redis/">
+                <span class="chip center-align waves-effect waves-light chip-default">Redis</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Redis-的基础/">
+                <span class="chip center-align waves-effect waves-light chip-default">Redis 的基础</span>
+            </a>
+            
+            
+            
+            <a href="/tags/介绍/">
+                <span class="chip center-align waves-effect waves-light chip-default">介绍</span>
+            </a>
+            
+            
+            
+            <a href="/tags/开始/">
+                <span class="chip center-align waves-effect waves-light chip-default">开始</span>
             </a>
             
             
@@ -892,7 +864,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">100</span>&nbsp;字
+                class="white-color">82</span>&nbsp;字
             
             
             
@@ -913,6 +885,10 @@
             <br>
             
             <br>
+            
+            <span id="icp"><img src="https://cdn.jsdelivr.net/gh/nameouyang/nameouyang.github.io/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="/" target="_blank">辽ICP备17018620号-1</a>
+            </span>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
@@ -1017,7 +993,16 @@ $(function () {
     
 
     
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="https://cdn.jsdelivr.net/gh/nameouyang/nameouyang.github.io/libs/background/canvas-nest.js"></script>
+    
 
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="https://cdn.jsdelivr.net/gh/nameouyang/nameouyang.github.io/libs/background/ribbon.min.js" async="async"></script>
     
 
     
