@@ -1,81 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>Hexo 的使用介绍</title>
-    <url>/2018/01/01/hexo-de-ji-ben-shi-yong/</url>
-    <content><![CDATA[<blockquote>
-<p>此文来自 Hexo 官方，为了对 Hexo 表示感谢所以把此文放在</p>
-</blockquote>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<a id="more"></a>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Redis 基础之 String</title>
+      <link href="/2020/06/20/redis-ji-chu-zhi-string/"/>
+      <url>/2020/06/20/redis-ji-chu-zhi-string/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
       <categories>
-        <category>hexo</category>
+          
+          <category> Redis </category>
+          
       </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>文档</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis 基础之 String</title>
-    <url>/2020/06/20/redis-ji-chu-zhi-string/</url>
-    <content><![CDATA[]]></content>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+            <tag> Redis 的基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于本笔记的说明</title>
+      <link href="/2019/04/11/jie-shao/"/>
+      <url>/2019/04/11/jie-shao/</url>
+      
+        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote><p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p></blockquote><h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote><p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p></blockquote><h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul><li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li><li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li><li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li></ul>]]></content>
+      
+      
       <categories>
-        <category>Redis</category>
+          
+          <category> 须知 </category>
+          
       </categories>
-      <tags>
-        <tag>Redis</tag>
-        <tag>Redis 的基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2018/01/02/test/</url>
-    <content><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p>
-<p>这是我的测试内容</p>
-<a id="more"></a>
-<p>这是我的测试内容</p>
-<p>这是我的测试内容</p>
-<p>这是我的测试内容</p>
-]]></content>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于本笔记的说明</title>
-    <url>/2019/04/11/jie-shao/</url>
-    <content><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote>
-<p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p>
-</blockquote>
-<h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote>
-<p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p>
-</blockquote>
-<h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul>
-<li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li>
-<li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li>
-<li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li>
-</ul>
-]]></content>
+      
+      
+        <tags>
+            
+            <tag> 介绍 </tag>
+            
+            <tag> 开始 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>test</title>
+      <link href="/2018/01/02/test/"/>
+      <url>/2018/01/02/test/</url>
+      
+        <content type="html"><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p><p>这是我的测试内容</p><a id="more"></a><p>这是我的测试内容</p><p>这是我的测试内容</p><p>这是我的测试内容</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo 的使用介绍</title>
+      <link href="/2018/01/01/hexo-de-ji-ben-shi-yong/"/>
+      <url>/2018/01/01/hexo-de-ji-ben-shi-yong/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>此文来自 Hexo 官方，为了对 Hexo 表示感谢所以把此文放在</p></blockquote><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><a id="more"></a><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      
+      
       <categories>
-        <category>须知</category>
+          
+          <category> hexo </category>
+          
       </categories>
-      <tags>
-        <tag>介绍</tag>
-        <tag>开始</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 文档 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
