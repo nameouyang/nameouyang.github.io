@@ -104,17 +104,6 @@
     
   </li>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -192,17 +181,6 @@
 			    <i class="fa-fw fas fa-user-circle"></i>
 			
 			关于
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
 		</a>
           
         </li>
@@ -328,6 +306,13 @@
 
 <div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
+        <div id="prev-cover" class="left waves-effect carousel-control">
+            <i class="icon fa fa-angle-left"></i>
+        </div>
+        <div id="next-cover" class="right waves-effect carousel-control">
+            <i class="icon fa fa-angle-right"></i>
+        </div>
+    
 
     <div class="carousel-item red white-text bg-cover about-cover">
         <div class="container">
@@ -350,7 +335,7 @@
                         startDelay: 300,
                         typeSpeed: 100,
                         loop: true,
-                        backSpeed: 50,
+                        backSpeed: 60,
                         showCursor: true
                     });
                 </script>
@@ -415,6 +400,33 @@
         </div>
     </div>
 
+    
+        
+
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('https://cdn.jsdelivr.net/gh/nameouyang/nameouyang.github.io/medias/featureimages/17.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">关于本笔记的说明</div>
+                            <div class="description center-align">
+                                
+                                    一些简单的介绍
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/2019/04/11/jie-shao/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
     
 </div>
 
@@ -515,6 +527,39 @@
 
 
 
+
+
+<div class="title"><i class="far fa-thumbs-up"></i>&nbsp;&nbsp;推荐文章</div>
+
+<div class="row">
+
+    
+    
+    <div class="col s12" >
+        <div class="post-card" style="background-image: url('/medias/featureimages/17.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/须知/" class="category">须知</a>
+                        
+                    
+                </div>
+                <a href="/2019/04/11/jie-shao/">
+                    <h3 class="post-title">关于本笔记的说明</h3>
+                </a>
+                <p class="post-description">一些简单的介绍</p>
+                <a href="/2019/04/11/jie-shao/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+
                     </div>
                     
                 </div>
@@ -544,7 +589,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                Redis String 介绍
                             
                         </div>
                         <div class="publish-info">
@@ -595,7 +640,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                wqq21
+                                一些简单的介绍
                             
                         </div>
                         <div class="publish-info">
@@ -606,8 +651,8 @@
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Diary/" class="post-category">
-                                    Diary
+                                <a href="/categories/须知/" class="post-category">
+                                    须知
                                 </a>
                                 
                                 
@@ -646,8 +691,7 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
-这是我的测试内容
+                                这是显示在首页的概述，正文内容均会被隐藏。
                             
                         </div>
                         <div class="publish-info">
@@ -663,6 +707,14 @@
                         </div>
                     </div>
 
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/test/">
+                            <span class="chip bg-color">test</span>
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -786,13 +838,13 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             <span id="year">2019</span>
-            <a href="/about" target="_blank">Jiang ouyang</a>
+            <a href="http://ouyangj.cn" target="_blank">Jiang ouyang</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">82</span>&nbsp;字
+                class="white-color">340</span>&nbsp;字
             
             
             
