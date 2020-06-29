@@ -1,107 +1,311 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Redis 基础之 String</title>
-      <link href="/2020/06/20/redis-ji-chu-zhi-string/"/>
-      <url>/2020/06/20/redis-ji-chu-zhi-string/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
+<search>
+  <entry>
+    <title>Hexo 的使用介绍</title>
+    <url>/2018/01/01/hexo-de-ji-ben-shi-yong/</url>
+    <content><![CDATA[<blockquote>
+<p>主要介绍 Hexo 的使用和一些基本的命令操作，主题设置和一些高级配置本文没有介绍，有兴趣可以参考官方文档</p>
+<p>此文来自 Hexo 官方，为了对 Hexo 表示感谢所以把此文放在这里,更多信息参考官方文档: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+</blockquote>
+<h3 id="1-Hexo-简介"><a href="#1-Hexo-简介" class="headerlink" title="1. Hexo 简介"></a>1. Hexo 简介</h3><hr>
+<p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo官网</a>进行详细查看，因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
+<h3 id="2-快速开始"><a href="#2-快速开始" class="headerlink" title="2. 快速开始"></a>2. 快速开始</h3><p><strong>2.1 环境说明</strong></p>
+<blockquote>
+<p>环境说明：Mac + node + git + Homebrew</p>
+</blockquote>
+<p><strong>2.2 安装 Hexo</strong></p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli  // 安装客户端
+$ <span class="token function">npm</span> <span class="token function">install</span> hexo-server  // 安装服务端
+</code></pre>
+<p><strong>2.3 初始化Hexo</strong></p>
+<pre class=" language-bash"><code class="language-bash">$ hexo init hexo
+$ <span class="token function">cd</span> hexo
+$ <span class="token function">npm</span> <span class="token function">install</span>
+</code></pre>
+<p><strong>2.4 然后生成静态页面并打开hexo本地服务</strong></p>
+<pre class=" language-bash"><code class="language-bash">$ hexo g <span class="token operator">&amp;&amp;</span> hexo s
+</code></pre>
+<h3 id="3-一些其它命令"><a href="#3-一些其它命令" class="headerlink" title="3. 一些其它命令"></a>3. 一些其它命令</h3><hr>
+<p><strong>init</strong></p>
+<blockquote>
+<p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo init <span class="token punctuation">[</span>folder<span class="token punctuation">]</span>
+</code></pre>
+<p><strong>new</strong></p>
+<blockquote>
+<p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>title<span class="token operator">></span>
+</code></pre>
+<pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"post title with whitespace"</span>
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-p</code>, <code>--path</code></td>
+<td>自定义新文章的路径</td>
+</tr>
+<tr>
+<td><code>-r</code>, <code>--replace</code></td>
+<td>如果存在同名文章，将其替换</td>
+</tr>
+<tr>
+<td><code>-s</code>, <code>--slug</code></td>
+<td>文章的 Slug，作为新文章的文件名和发布后的 URL</td>
+</tr>
+</tbody>
+</table>
+<p>默认情况下，Hexo 会使用文章的标题来决定文章文件的路径。对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件。你可以使用 <code>--path</code> 参数来覆盖上述行为、自行决定文件的目录：</p>
+<pre class=" language-bash"><code class="language-bash">$ hexo new page --path about/me <span class="token string">"About me"</span>
+</code></pre>
+<p>以上命令会创建一个 <code>source/about/me.md</code> 文件，同时 Front Matter 中的 title 为 <code>&quot;About me&quot;</code></p>
+<p>注意！title 是必须指定的！如果你这么做并不能达到你的目的：</p>
+<pre class=" language-bash"><code class="language-bash">$ hexo new page --path about/me
+</code></pre>
+<p>此时 Hexo 会创建 <code>source/_posts/about/me.md</code>，同时 <code>me.md</code> 的 Front Matter 中的 title 为 <code>&quot;page&quot;</code>。这是因为在上述命令中，hexo-cli 将 <code>page</code> 视为指定文章的标题、并采用默认的 <code>layout</code>。</p>
+<p><strong>generate</strong></p>
+<blockquote>
+<p>生成静态文件</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo generate 或 hexo g
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-d</code>, <code>--deploy</code></td>
+<td>文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td><code>-w</code>, <code>--watch</code></td>
+<td>监视文件变动</td>
+</tr>
+<tr>
+<td><code>-b</code>, <code>--bail</code></td>
+<td>生成过程中如果发生任何未处理的异常则抛出异常</td>
+</tr>
+<tr>
+<td><code>-f</code>, <code>--force</code></td>
+<td>强制重新生成文件 Hexo 引入了差分机制，如果 <code>public</code> 目录存在，那么 <code>hexo g</code> 只会重新生成改动的文件。 使用该参数的效果接近 <code>hexo clean &amp;&amp; hexo generate</code></td>
+</tr>
+<tr>
+<td><code>-c</code>, <code>--concurrency</code></td>
+<td>最大同时生成文件的数量，默认无限制</td>
+</tr>
+</tbody>
+</table>
+<p><strong>publish</strong></p>
+<blockquote>
+<p>发表草稿</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo publish <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>filename<span class="token operator">></span>
+</code></pre>
+<p><strong>server</strong></p>
+<blockquote>
+<p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo server
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-p</code>, <code>--port</code></td>
+<td>重设端口</td>
+</tr>
+<tr>
+<td><code>-s</code>, <code>--static</code></td>
+<td>只使用静态文件</td>
+</tr>
+<tr>
+<td><code>-l</code>, <code>--log</code></td>
+<td>启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>deploy</strong></p>
+<blockquote>
+<p>部署网站。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo deploy 或 hexo d
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-g</code>, <code>--generate</code></td>
+<td>部署之前预先生成静态文件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>render</strong></p>
+<blockquote>
+<p>渲染文件</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo render <span class="token operator">&lt;</span>file1<span class="token operator">></span> <span class="token punctuation">[</span>file2<span class="token punctuation">]</span> <span class="token punctuation">..</span>.
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-o</code>, <code>--output</code></td>
+<td>设置输出路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>migrate</strong></p>
+<blockquote>
+<p>从其他博客系统 <a href="https://hexo.io/zh-cn/docs/migration" target="_blank" rel="noopener">迁移内容</a>。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo migrate <span class="token operator">&lt;</span>type<span class="token operator">></span>
+</code></pre>
+<p><strong>clean</strong></p>
+<blockquote>
+<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
+<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo clean
+</code></pre>
+<p><strong>list</strong></p>
+<blockquote>
+<p>列出网站资料</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo list <span class="token operator">&lt;</span>type<span class="token operator">></span>
+</code></pre>
+<p><strong>version</strong></p>
+<blockquote>
+<p>显示 Hexo 版本</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo version
+</code></pre>
+<h3 id="4-命令可选项"><a href="#4-命令可选项" class="headerlink" title="4. 命令可选项"></a>4. 命令可选项</h3><p><strong>安全模式</strong></p>
+<blockquote>
+<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo --safe
+</code></pre>
+<p><strong>调试模式</strong></p>
+<blockquote>
+<p>在终端中显示调试信息并记录到 <code>debug.log</code>。当您碰到问题时，可以尝试用调试模式重新执行一次，并 <a href="https://github.com/hexojs/hexo/issues/new" target="_blank" rel="noopener">提交调试信息到 GitHub</a></p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo --debug
+</code></pre>
+<p><strong>简洁模式</strong></p>
+<blockquote>
+<p>隐藏终端信息</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo --silent
+</code></pre>
+<p><strong>自定义配置文件的路径</strong></p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 custom.yml 代替默认的 _config.yml</span>
+$ hexo server --config custom.yml
+
+<span class="token comment" spellcheck="true"># 使用 custom.yml 和 custom2.json，其中 custom2.json 优先级更高</span>
+$ hexo generate --config custom.yml,custom2.json,custom3.yml
+</code></pre>
+<p>自定义配置文件的路径，指定这个参数后将不再使用默认的 <code>_config.yml</code>。<br>你可以使用一个 YAML 或 JSON 文件的路径，也可以使用逗号分隔（无空格）的多个 YAML 或 JSON 文件的路径。例如：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 custom.yml 代替默认的 _config.yml</span>
+$ hexo server --config custom.yml
+
+<span class="token comment" spellcheck="true"># 使用 custom.yml, custom2.json 和 custom3.yml，其中 custom3.yml 优先级最高，其次是 custom2.json</span>
+$ hexo generate --config custom.yml,custom2.json,custom3.yml
+</code></pre>
+<p>当你指定了多个配置文件以后，Hexo 会按顺序将这部分配置文件合并成一个 <code>_multiconfig.yml</code>。如果遇到重复的配置，排在后面的文件的配置会覆盖排在前面的文件的配置。这个原则适用于任意数量、任意深度的 YAML 和 JSON 文件。</p>
+<p><strong>显示草稿</strong></p>
+<blockquote>
+<p>显示 <code>source/_drafts</code> 文件夹中的草稿文章</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo --draft
+</code></pre>
+<p><strong>自定义 CWD</strong></p>
+<blockquote>
+<p>自定义当前工作目录（Current working directory）的路径。</p>
+</blockquote>
+<pre class=" language-bash"><code class="language-bash">$ hexo --cwd /path/to/cwd
+</code></pre>
+]]></content>
       <categories>
-          
-          <category> Redis </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Redis </tag>
-            
-            <tag> Redis 的基础 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>关于本笔记的说明</title>
-      <link href="/2019/04/11/jie-shao/"/>
-      <url>/2019/04/11/jie-shao/</url>
-      
-        <content type="html"><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote><p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p></blockquote><h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote><p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p></blockquote><h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul><li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li><li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li><li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li></ul>]]></content>
-      
-      
+      <tags>
+        <tag>hexo</tag>
+        <tag>文档</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis 基础之 String</title>
+    <url>/2020/06/20/redis-ji-chu-zhi-string/</url>
+    <content><![CDATA[]]></content>
       <categories>
-          
-          <category> 须知 </category>
-          
+        <category>Redis</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 介绍 </tag>
-            
-            <tag> 开始 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test</title>
-      <link href="/2018/01/02/test/"/>
-      <url>/2018/01/02/test/</url>
-      
-        <content type="html"><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p><p>这是我的测试内容</p><a id="more"></a><p>这是我的测试内容</p><p>这是我的测试内容</p><p>这是我的测试内容</p>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> test </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hexo 的使用介绍</title>
-      <link href="/2018/01/01/hexo-de-ji-ben-shi-yong/"/>
-      <url>/2018/01/01/hexo-de-ji-ben-shi-yong/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>此文来自 Hexo 官方，为了对 Hexo 表示感谢所以把此文放在</p></blockquote><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><a id="more"></a><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Redis</tag>
+        <tag>Redis 的基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2018/01/02/test/</url>
+    <content><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p>
+<p>这是我的测试内容</p>
+<a id="more"></a>
+<p>这是我的测试内容</p>
+<p>这是我的测试内容</p>
+<p>这是我的测试内容</p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于本笔记的说明</title>
+    <url>/2019/04/11/jie-shao/</url>
+    <content><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote>
+<p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p>
+</blockquote>
+<h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote>
+<p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p>
+</blockquote>
+<h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul>
+<li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li>
+<li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li>
+<li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li>
+</ul>
+]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>须知</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-            <tag> 文档 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>介绍</tag>
+        <tag>开始</tag>
+      </tags>
+  </entry>
 </search>
