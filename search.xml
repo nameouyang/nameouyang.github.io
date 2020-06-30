@@ -260,6 +260,20 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
       </tags>
   </entry>
   <entry>
+    <title>test</title>
+    <url>/2018/01/02/test/</url>
+    <content><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p>
+<p>这是我的测试内容</p>
+<a id="more"></a>
+<p>这是我的测试内容</p>
+<p>这是我的测试内容</p>
+<p>这是我的测试内容</p>
+]]></content>
+      <tags>
+        <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Redis 基础数据结构</title>
     <url>/2020/06/20/redis-ji-chu-zhi-string/</url>
     <content><![CDATA[<blockquote>
@@ -308,7 +322,8 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
 <blockquote>
 <p><a href="https://redislabs.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/" target="_blank" rel="noopener">Redis数据结构是什么样的</a></p>
 </blockquote>
-<h2 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h2><pre class=" language-bash"><code class="language-bash"><span class="token operator">></span> <span class="token keyword">set</span> hello world
+<h2 id="STRING"><a href="#STRING" class="headerlink" title="STRING"></a>STRING</h2><p><div align="center"> <img src="/2020/06/20/redis-ji-chu-zhi-string/6019b2db-bc3e-4408-b6d8-96025f4481d6.png" width="400"> </div><br></p>
+<pre class=" language-bash"><code class="language-bash"><span class="token operator">></span> <span class="token keyword">set</span> hello world
 OK
 <span class="token operator">></span> get hello
 <span class="token string">"world"</span>
@@ -430,20 +445,6 @@ OK
       <tags>
         <tag>Redis</tag>
         <tag>Redis 的基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>test</title>
-    <url>/2018/01/02/test/</url>
-    <content><![CDATA[<h2 id="这是我的测试内容"><a href="#这是我的测试内容" class="headerlink" title="这是我的测试内容"></a>这是我的测试内容</h2><p>这是我的测试内容这是我的测试内容</p>
-<p>这是我的测试内容</p>
-<a id="more"></a>
-<p>这是我的测试内容</p>
-<p>这是我的测试内容</p>
-<p>这是我的测试内容</p>
-]]></content>
-      <tags>
-        <tag>test</tag>
       </tags>
   </entry>
   <entry>
