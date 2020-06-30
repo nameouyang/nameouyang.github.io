@@ -447,6 +447,32 @@ OK
       </tags>
   </entry>
   <entry>
+    <title>关于本笔记的说明</title>
+    <url>/2019/04/11/jie-shao/</url>
+    <content><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote>
+<p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p>
+</blockquote>
+<h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote>
+<p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p>
+</blockquote>
+<h3 id="之前的文章"><a href="#之前的文章" class="headerlink" title="之前的文章"></a>之前的文章</h3><blockquote>
+<p>由于本次做了博客迁移，之前的文章格式不兼容，可能需要一些时间做迁移，也有可能不做迁移了</p>
+</blockquote>
+<h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul>
+<li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li>
+<li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li>
+<li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li>
+</ul>
+]]></content>
+      <categories>
+        <category>须知</category>
+      </categories>
+      <tags>
+        <tag>介绍</tag>
+        <tag>开始</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>跨域问题</title>
     <url>/2020/06/24/kua-yu-wen-ti/</url>
     <content><![CDATA[<h1 id="一些常见跨域的问题"><a href="#一些常见跨域的问题" class="headerlink" title="一些常见跨域的问题"></a>一些常见跨域的问题</h1><h3 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a><strong>什么是跨域？</strong></h3><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源，这里跨域是广义的。</p>
@@ -934,32 +960,6 @@ socket<span class="token punctuation">.</span><span class="token function">liste
       </categories>
       <tags>
         <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于本笔记的说明</title>
-    <url>/2019/04/11/jie-shao/</url>
-    <content><![CDATA[<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><blockquote>
-<p>写此博客的目的是首先为了将自己之前所学习到的知识点做一些总结，其次是想锻炼自己的写作能力，再次也是想把自己所学习到的东西分享给大家，希望大家一起进步</p>
-</blockquote>
-<h3 id="文章内容"><a href="#文章内容" class="headerlink" title="文章内容"></a>文章内容</h3><blockquote>
-<p>文章主要写一些后端开发的技术知识，包括但不仅限于 MySQL、Redis、Linux 等</p>
-</blockquote>
-<h3 id="之前的文章"><a href="#之前的文章" class="headerlink" title="之前的文章"></a>之前的文章</h3><blockquote>
-<p>由于本次做了博客迁移，之前的文章格式不兼容，可能需要一些时间做迁移，也有可能不做迁移了</p>
-</blockquote>
-<h3 id="阅读须知"><a href="#阅读须知" class="headerlink" title="阅读须知"></a>阅读须知</h3><ul>
-<li>此博客的文章是自己的一些学习笔记，文中的观点仅代表我个人的理解</li>
-<li>由于本人水平有限，如有错误希望请大家能够指出，一起进步</li>
-<li>有的知识点会参考网络上的一些资料，如果侵权请联系我删除</li>
-</ul>
-]]></content>
-      <categories>
-        <category>须知</category>
-      </categories>
-      <tags>
-        <tag>介绍</tag>
-        <tag>开始</tag>
       </tags>
   </entry>
 </search>
