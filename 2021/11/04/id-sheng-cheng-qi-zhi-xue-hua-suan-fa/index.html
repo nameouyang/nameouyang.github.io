@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="LRU go 实现, 小江">
+    <meta name="keywords" content="ID 生成器之雪花算法, 小江">
     <meta name="description" content="一&#34;江&#34;春水向东流">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>LRU go 实现 | 小江</title>
+    <title>ID 生成器之雪花算法 | 小江</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -264,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">LRU go 实现</h1>
+                    <h1 class="description center-align post-title">ID 生成器之雪花算法</h1>
                 </div>
             </div>
         </div>
@@ -394,10 +394,6 @@
                                 <span class="chip bg-color">golang</span>
                             </a>
                         
-                            <a href="/tags/lru/">
-                                <span class="chip bg-color">lru</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -428,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    736
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -450,175 +446,81 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>本文主要介绍 LRU 的 golang 版本的实现</p>
-</blockquote>
-<h3 id="LRU-简介"><a href="#LRU-简介" class="headerlink" title="LRU 简介"></a>LRU 简介</h3><p>首先 LRU 算法的全称是 Least Recently Used 即最近最少未使用，是一种很典型的页面置换算法，相应的还有 LFU、先进先出算法等</p>
-<h3 id="LRU-实现"><a href="#LRU-实现" class="headerlink" title="LRU 实现"></a>LRU 实现</h3><p>使用 hashTable + 双向链表实现</p>
-<p>整体的设计思路是，可以使用 HashMap 存储 key，这样可以做到 save 和 get key的时间都是 O(1)，而 HashMap 的 Value 指向双向链表实现的 LRU 的 Node 节点</p>
-<p><b>核心操作的步骤</b>:</p>
-<ul>
-<li>set(key, value)，首先在 HashMap 找到 Key 对应的节点，如果节点存在，更新节点的值，并把这个节点移动队头。如果不存在，需要构造新的节点，并且尝试把节点塞到队头，如果LRU空间不足，则通过 tail 淘汰掉队尾的节点，同时在 HashMap 中移除 Key</li>
-<li>get(key)，通过 HashMap 找到 LRU 链表节点，把节点插入到队头，返回缓存的值</li>
-</ul>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> CacheNode <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Key<span class="token punctuation">,</span> Value <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+                <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>雪花算法</strong> 也叫 SnowFlake， 是 Twitter 开源的分布式 id 生成算法，核心思想就是：使用一个 64 bit 的 long 型的数字作为全局唯一 id。在分布式系统中的应用十分广泛，且ID 引入了时间戳，基本上保持自增的，生成的最终结果其实就是一个 long 类型的长整型数字。</p>
+<p>算法所有的内容都是针对这个数字进行运算的。我们单说long类型，64位说的是数字转换为二进制形式时候的表现，其中第一位表示的是正负，也就是符号，剩下的63位表示的是字面数字</p>
+<h3 id="为什么要使用雪花算法"><a href="#为什么要使用雪花算法" class="headerlink" title="为什么要使用雪花算法"></a>为什么要使用雪花算法</h3><p>针对每个公司，随着服务化演进，单个服务越来越多，数据库分的越来越细，有的时候一个业务需要分成好几个库，这时候自增主键或者序列之类的主键 id 生成方式已经不再满足需求，分布式系统中需要的是一个全局唯一的 id 生成规则雪花算法孕育而生</p>
+<h3 id="雪花算法实现"><a href="#雪花算法实现" class="headerlink" title="雪花算法实现"></a>雪花算法实现</h3><p>雪花算法把<strong>时间戳</strong>，<strong>工作机器 ID</strong>， <strong>序列号</strong>组合成一个  64 位 long 类型数字<br>第一位置零，</p>
+<p>[2,42] 这 41 位存放时间戳</p>
+<p>[43,52] 这 10 位存放机器 id</p>
+<p>[53,64] 最后 12 位存放序列号</p>
+<p>这 64 个 bit 中，其中 1 个 bit 是不用的，然后用其中的 41 bit 作为毫秒数，用 10 bit 作为工作机器 id，12 bit 作为序列号</p>
+<h3 id="golang-实现"><a href="#golang-实现" class="headerlink" title="golang 实现"></a>golang 实现</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> algorithm
+
+<span class="token keyword">import</span> <span class="token string">"time"</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+    machineID     <span class="token builtin">int64</span> <span class="token comment" spellcheck="true">// 机器 id 占10位, 十进制范围是 [ 0, 1023 ]</span>
+    sn            <span class="token builtin">int64</span> <span class="token comment" spellcheck="true">// 序列号占 12 位,十进制范围是 [ 0, 4095 ]</span>
+    lastTimeStamp <span class="token builtin">int64</span> <span class="token comment" spellcheck="true">// 上次的时间戳(毫秒级), 1秒=1000毫秒, 1毫秒=1000微秒,1微秒=1000纳秒</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    lastTimeStamp <span class="token operator">=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000000</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">func</span> <span class="token punctuation">(</span>cnode <span class="token operator">*</span>CacheNode<span class="token punctuation">)</span> <span class="token function">NewCacheNode</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">*</span>CacheNode <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token operator">&amp;</span>CacheNode<span class="token punctuation">{</span>k<span class="token punctuation">,</span> v<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">SetMachineId</span><span class="token punctuation">(</span>mid <span class="token builtin">int64</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 把机器 id 左移 12 位,让出 12 位空间给序列号使用</span>
+    machineID <span class="token operator">=</span> mid <span class="token operator">&lt;&lt;</span> <span class="token number">12</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">type</span> LRUCache <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Capacity <span class="token builtin">int</span>
-    dlist    <span class="token operator">*</span>list<span class="token punctuation">.</span>List
-    cacheMap <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token operator">*</span>list<span class="token punctuation">.</span>Element
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">NewLRUCache</span><span class="token punctuation">(</span><span class="token builtin">cap</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>LRUCache <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token operator">&amp;</span>LRUCache<span class="token punctuation">{</span>
-        Capacity<span class="token punctuation">:</span> <span class="token builtin">cap</span><span class="token punctuation">,</span>
-        dlist<span class="token punctuation">:</span>    list<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        cacheMap<span class="token punctuation">:</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token operator">*</span>list<span class="token punctuation">.</span>Element<span class="token punctuation">)</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Set</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>dlist <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"LRUCache结构体未初始化"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
-        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">MoveToFront</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
-        pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> v
-        <span class="token keyword">return</span> <span class="token boolean">nil</span>
-    <span class="token punctuation">}</span>
-
-    newElement <span class="token operator">:=</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">PushFront</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>CacheNode<span class="token punctuation">{</span>k<span class="token punctuation">,</span> v<span class="token punctuation">}</span><span class="token punctuation">)</span>
-    lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> newElement
-
-    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> lru<span class="token punctuation">.</span>Capacity <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//移掉最后一个</span>
-        lastElement <span class="token operator">:=</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Back</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> lastElement <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token keyword">func</span> <span class="token function">GetSnowflakeId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int64</span> <span class="token punctuation">{</span>
+    curTimeStamp <span class="token operator">:=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000000</span>
+    <span class="token comment" spellcheck="true">// 同一毫秒</span>
+    <span class="token keyword">if</span> curTimeStamp <span class="token operator">==</span> lastTimeStamp <span class="token punctuation">{</span>
+        sn<span class="token operator">++</span>
+        <span class="token comment" spellcheck="true">// 序列号占 12 位,十进制范围是 [ 0, 4095 ]</span>
+        <span class="token keyword">if</span> sn <span class="token operator">></span> <span class="token number">4095</span> <span class="token punctuation">{</span>
+            time<span class="token punctuation">.</span><span class="token function">Sleep</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>Millisecond<span class="token punctuation">)</span>
+            curTimeStamp <span class="token operator">=</span> time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000000</span>
+            lastTimeStamp <span class="token operator">=</span> curTimeStamp
+            sn <span class="token operator">=</span> <span class="token number">0</span>
         <span class="token punctuation">}</span>
-        cacheNode <span class="token operator">:=</span> lastElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span>
-        <span class="token function">delete</span><span class="token punctuation">(</span>lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">,</span> cacheNode<span class="token punctuation">.</span>Key<span class="token punctuation">)</span>
-        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>lastElement<span class="token punctuation">)</span>
+
+        <span class="token comment" spellcheck="true">// 取 64 位的二进制数 0000000000 0000000000 0000000000 0001111111111 1111111111 1111111111  1 ( 这里共 41 个 1 )和时间戳进行并操作</span>
+        <span class="token comment" spellcheck="true">// 并结果( 右数 )第 42 位必然是 0,  低 41 位也就是时间戳的低 41 位</span>
+        rightBinValue <span class="token operator">:=</span> curTimeStamp <span class="token operator">&amp;</span> <span class="token number">0x1FFFFFFFFFF</span>
+        <span class="token comment" spellcheck="true">// 机器 id 占用10位空间,序列号占用12位空间,所以左移 22 位; 经过上面的并操作,左移后的第 1 位,必然是 0</span>
+        rightBinValue <span class="token operator">&lt;&lt;=</span> <span class="token number">22</span>
+        id <span class="token operator">:=</span> rightBinValue <span class="token operator">|</span> machineID <span class="token operator">|</span> sn
+        <span class="token keyword">return</span> id
     <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Get</span><span class="token punctuation">(</span>k <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> ret <span class="token builtin">bool</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>cacheMap <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> v<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"LRUCache结构体未初始化"</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> curTimeStamp <span class="token operator">></span> lastTimeStamp <span class="token punctuation">{</span>
+        sn <span class="token operator">=</span> <span class="token number">0</span>
+        lastTimeStamp <span class="token operator">=</span> curTimeStamp
+        <span class="token comment" spellcheck="true">// 取 64 位的二进制数 0000000000 0000000000 0000000000 0001111111111 1111111111 1111111111  1 ( 这里共 41 个 1 )和时间戳进行并操作</span>
+        <span class="token comment" spellcheck="true">// 并结果( 右数 )第 42 位必然是 0,  低 41 位也就是时间戳的低 41 位</span>
+        rightBinValue <span class="token operator">:=</span> curTimeStamp <span class="token operator">&amp;</span> <span class="token number">0x1FFFFFFFFFF</span>
+        <span class="token comment" spellcheck="true">// 机器 id 占用10位空间,序列号占用12位空间,所以左移 22 位; 经过上面的并操作,左移后的第 1 位,必然是 0</span>
+        rightBinValue <span class="token operator">&lt;&lt;=</span> <span class="token number">22</span>
+        id <span class="token operator">:=</span> rightBinValue <span class="token operator">|</span> machineID <span class="token operator">|</span> sn
+        <span class="token keyword">return</span> id
     <span class="token punctuation">}</span>
-
-    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
-        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">MoveToFront</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span><span class="token punctuation">.</span>Value<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token keyword">if</span> curTimeStamp <span class="token operator">&lt;</span> lastTimeStamp <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
     <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> v<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Remove</span><span class="token punctuation">(</span>k <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>cacheMap <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
-        cacheNode <span class="token operator">:=</span> pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span>
-        <span class="token function">delete</span><span class="token punctuation">(</span>lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">,</span> cacheNode<span class="token punctuation">.</span>Key<span class="token punctuation">)</span>
-        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token keyword">return</span> <span class="token number">0</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>这里使用了 golang 自带的 list 库，其实底层就是一个双向链表</p>
-<p>下面使用我们自己实现的双向链表来实现</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> Node <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    Key <span class="token builtin">int</span>
-    Value <span class="token builtin">int</span>
-    pre<span class="token punctuation">,</span> next <span class="token operator">*</span>Node
-<span class="token punctuation">}</span>
-
-<span class="token keyword">type</span> LUrCache <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    limit <span class="token builtin">int</span>
-    HashMap <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token operator">*</span>Node
-    head<span class="token punctuation">,</span> end <span class="token operator">*</span>Node
-<span class="token punctuation">}</span>
-<span class="token keyword">func</span> <span class="token function">Constructor</span><span class="token punctuation">(</span>capacity <span class="token builtin">int</span><span class="token punctuation">)</span> LRUCache <span class="token punctuation">{</span>
-    lruCache <span class="token operator">:=</span> LRUCache<span class="token punctuation">{</span>limit<span class="token punctuation">:</span>capacity<span class="token punctuation">}</span>
-    lruCache<span class="token punctuation">.</span>HashMap <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token operator">*</span>Node<span class="token punctuation">,</span> capacity<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> lruCache
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Get</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> v<span class="token punctuation">,</span>ok<span class="token operator">:=</span> l<span class="token punctuation">.</span>HashMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>ok <span class="token punctuation">{</span>
-        l<span class="token punctuation">.</span><span class="token function">refreshNode</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
-        <span class="token keyword">return</span> v<span class="token punctuation">.</span>Value
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Put</span><span class="token punctuation">(</span>key <span class="token builtin">int</span><span class="token punctuation">,</span> value <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> v<span class="token punctuation">,</span>ok <span class="token operator">:=</span> l<span class="token punctuation">.</span>HashMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token operator">!</span>ok<span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>HashMap<span class="token punctuation">)</span> <span class="token operator">>=</span> l<span class="token punctuation">.</span>limit<span class="token punctuation">{</span>
-            oldKey <span class="token operator">:=</span> l<span class="token punctuation">.</span><span class="token function">removeNode</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>head<span class="token punctuation">)</span>
-            <span class="token function">delete</span><span class="token punctuation">(</span>l<span class="token punctuation">.</span>HashMap<span class="token punctuation">,</span> oldKey<span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-        node <span class="token operator">:=</span> Node<span class="token punctuation">{</span>Key<span class="token punctuation">:</span>key<span class="token punctuation">,</span> Value<span class="token punctuation">:</span>value<span class="token punctuation">}</span>
-        l<span class="token punctuation">.</span><span class="token function">addNode</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>node<span class="token punctuation">)</span>
-        l<span class="token punctuation">.</span>HashMap<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>node
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-        v<span class="token punctuation">.</span>Value <span class="token operator">=</span> value
-        l<span class="token punctuation">.</span><span class="token function">refreshNode</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">refreshNode</span><span class="token punctuation">(</span>node <span class="token operator">*</span>Node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> node <span class="token operator">==</span> l<span class="token punctuation">.</span>end <span class="token punctuation">{</span>
-        <span class="token keyword">return</span>
-    <span class="token punctuation">}</span>
-    l<span class="token punctuation">.</span><span class="token function">removeNode</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
-    l<span class="token punctuation">.</span><span class="token function">addNode</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">removeNode</span><span class="token punctuation">(</span>node <span class="token operator">*</span>Node<span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> node <span class="token operator">==</span> l<span class="token punctuation">.</span>end  <span class="token punctuation">{</span>
-        l<span class="token punctuation">.</span>end <span class="token operator">=</span> l<span class="token punctuation">.</span>end<span class="token punctuation">.</span>pre
-        l<span class="token punctuation">.</span>end<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token boolean">nil</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> node <span class="token operator">==</span> l<span class="token punctuation">.</span>head <span class="token punctuation">{</span>
-        l<span class="token punctuation">.</span>head <span class="token operator">=</span> l<span class="token punctuation">.</span>head<span class="token punctuation">.</span>next
-        l<span class="token punctuation">.</span>head<span class="token punctuation">.</span>pre <span class="token operator">=</span> <span class="token boolean">nil</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
-        node<span class="token punctuation">.</span>pre<span class="token punctuation">.</span>next <span class="token operator">=</span> node<span class="token punctuation">.</span>next
-        node<span class="token punctuation">.</span>next<span class="token punctuation">.</span>pre <span class="token operator">=</span> node<span class="token punctuation">.</span>pre
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> node<span class="token punctuation">.</span>Key
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token punctuation">(</span>l <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">addNode</span><span class="token punctuation">(</span>node <span class="token operator">*</span>Node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> l<span class="token punctuation">.</span>end <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        l<span class="token punctuation">.</span>end<span class="token punctuation">.</span>next <span class="token operator">=</span> node
-        node<span class="token punctuation">.</span>pre <span class="token operator">=</span> l<span class="token punctuation">.</span>end
-        node<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token boolean">nil</span>
-    <span class="token punctuation">}</span>
-    l<span class="token punctuation">.</span>end <span class="token operator">=</span> node
-    <span class="token keyword">if</span> l<span class="token punctuation">.</span>head <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        l<span class="token punctuation">.</span>head <span class="token operator">=</span> node
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<h3 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h3><p><strong>Q：为什么第一位不用</strong> </p>
+<p>A：因为二进制里第一个 bit 为如果是 1，那么都是负数，但是我们生成的 id 都是正数，所以第一个 bit 统一都是 0</p>
+<p><strong>Q：41 bit：表示的是时间戳，单位为什么是毫秒</strong></p>
+<p>41 bit 可以表示的数字达 2^41 - 1，也就是可以标识 2 ^ 41 - 1 个毫秒值，换算成年就是表示 69 年的时间。</p>
+<p> <strong>Q：为什么用 10 bit 表示工作机器 ID</strong></p>
+<p>10 bit：记录工作机器 id，代表的是这个服务最多可以部署在 2^10 台机器上，也就是 1024 台机器。 </p>
+<p>但是 10 bit 里 5 个 bit 代表机房 id，5 个 bit 代表机器 id。意思就是最多代表 2 ^ 5 个机房（32 个机房），每个机房里可以代表 2 ^ 5 个机器（32 台机器），也可以根据自己公司的实际情况确定。</p>
+<p> <strong>Q：序列号是什么</strong></p>
+<p>这个是用来记录同一个毫秒内产生的不同 id</p>
+<p>12 bit 可以代表的最大正整数是 2 ^ 12 - 1 = 4096，也就是说可以用这个 12 bit 代表的数字来区分同一个毫秒内的 4096 个不同的 id。</p>
 
             </div>
             <hr/>
@@ -644,7 +546,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ouyangj.cn/2021/11/04/lru-go-shi-xian/">http://ouyangj.cn/2021/11/04/lru-go-shi-xian/</a>
+                    <a href="http://ouyangj.cn/2021/11/04/id-sheng-cheng-qi-zhi-xue-hua-suan-fa/">http://ouyangj.cn/2021/11/04/id-sheng-cheng-qi-zhi-xue-hua-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -657,7 +559,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://ouyangj.cn/2021/11/04/lru-go-shi-xian/" target="_blank">Jiang ouyang</a>
+                    <a href="http://ouyangj.cn/2021/11/04/id-sheng-cheng-qi-zhi-xue-hua-suan-fa/" target="_blank">Jiang ouyang</a>
                     !
                 </span>
             </div>
@@ -688,10 +590,6 @@
                             
                                 <a href="/tags/golang/">
                                     <span class="chip bg-color">golang</span>
-                                </a>
-                            
-                                <a href="/tags/lru/">
-                                    <span class="chip bg-color">lru</span>
                                 </a>
                             
                         </div>
@@ -859,9 +757,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/04/id-sheng-cheng-qi-zhi-xue-hua-suan-fa/">
                     <div class="card-image">
@@ -879,9 +778,67 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/算法/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/go/">
+                        <span class="chip bg-color">go</span>
+                    </a>
+                    
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11/04/lru-go-shi-xian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="LRU go 实现">
+                        
+                        <span class="card-title">LRU go 实现</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+本文主要介绍 LRU 的 golang 版本的实现
+
+LRU 简介首先 LRU 算法的全称是 Least Recently Used 即最近最少未使用，是一种很典型的页面置换算法，相应的还有 LFU、先进先出算法等
+LRU 实现使用 ha
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -905,53 +862,8 @@
                         <span class="chip bg-color">golang</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/24/kua-yu-wen-ti/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="跨域问题">
-                        
-                        <span class="card-title">跨域问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            一些常见的跨域问题
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-24
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/前端/" class="post-category">
-                                    前端
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/前端/">
-                        <span class="chip bg-color">前端</span>
+                    <a href="/tags/lru/">
+                        <span class="chip bg-color">lru</span>
                     </a>
                     
                 </div>
