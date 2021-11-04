@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="gallery, 小江">
+    <meta name="keywords" content="LRU go 实现, 小江">
     <meta name="description" content="一&#34;江&#34;春水向东流">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>gallery | 小江</title>
+    <title>LRU go 实现 | 小江</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -264,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">gallery</h1>
+                    <h1 class="description center-align post-title">LRU go 实现</h1>
                 </div>
             </div>
         </div>
@@ -384,12 +384,33 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/go/">
+                                <span class="chip bg-color">go</span>
+                            </a>
+                        
+                            <a href="/tags/golang/">
+                                <span class="chip bg-color">golang</span>
+                            </a>
+                        
+                            <a href="/tags/lru/">
+                                <span class="chip bg-color">lru</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/算法/" class="post-category">
+                                算法
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -398,7 +419,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-29
+                    2021-11-04
                 </div>
                 
 
@@ -407,7 +428,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    303
                 </div>
                 
 
@@ -429,7 +450,92 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <blockquote>
+<p>本文主要介绍 LRU 的 golang 版本的实现</p>
+</blockquote>
+<h3 id="LRU-简介"><a href="#LRU-简介" class="headerlink" title="LRU 简介"></a>LRU 简介</h3><p>首先 LRU 算法的全称是 Least Recently Used 即最近最少未使用，是一种很典型的页面置换算法，相应的还有 LFU、先进先出算法等</p>
+<h3 id="LRU-实现"><a href="#LRU-实现" class="headerlink" title="LRU 实现"></a>LRU 实现</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">type</span> CacheNode <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Key<span class="token punctuation">,</span> Value <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>cnode <span class="token operator">*</span>CacheNode<span class="token punctuation">)</span> <span class="token function">NewCacheNode</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">*</span>CacheNode <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>CacheNode<span class="token punctuation">{</span>k<span class="token punctuation">,</span> v<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">type</span> LRUCache <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    Capacity <span class="token builtin">int</span>
+    dlist    <span class="token operator">*</span>list<span class="token punctuation">.</span>List
+    cacheMap <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token operator">*</span>list<span class="token punctuation">.</span>Element
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">NewLRUCache</span><span class="token punctuation">(</span><span class="token builtin">cap</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">*</span>LRUCache <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&amp;</span>LRUCache<span class="token punctuation">{</span>
+        Capacity<span class="token punctuation">:</span> <span class="token builtin">cap</span><span class="token punctuation">,</span>
+        dlist<span class="token punctuation">:</span>    list<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        cacheMap<span class="token punctuation">:</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token operator">*</span>list<span class="token punctuation">.</span>Element<span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Set</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>dlist <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"LRUCache结构体未初始化"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">MoveToFront</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
+        pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span><span class="token punctuation">.</span>Value <span class="token operator">=</span> v
+        <span class="token keyword">return</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+
+    newElement <span class="token operator">:=</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">PushFront</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>CacheNode<span class="token punctuation">{</span>k<span class="token punctuation">,</span> v<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> newElement
+
+    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Len</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> lru<span class="token punctuation">.</span>Capacity <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//移掉最后一个</span>
+        lastElement <span class="token operator">:=</span> lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Back</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> lastElement <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">nil</span>
+        <span class="token punctuation">}</span>
+        cacheNode <span class="token operator">:=</span> lastElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span>
+        <span class="token function">delete</span><span class="token punctuation">(</span>lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">,</span> cacheNode<span class="token punctuation">.</span>Key<span class="token punctuation">)</span>
+        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>lastElement<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Get</span><span class="token punctuation">(</span>k <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>v <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> ret <span class="token builtin">bool</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>cacheMap <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> v<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> errors<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token string">"LRUCache结构体未初始化"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">MoveToFront</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span><span class="token punctuation">.</span>Value<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> v<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">nil</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>lru <span class="token operator">*</span>LRUCache<span class="token punctuation">)</span> <span class="token function">Remove</span><span class="token punctuation">(</span>k <span class="token keyword">interface</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token builtin">bool</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> lru<span class="token punctuation">.</span>cacheMap <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> pElement<span class="token punctuation">,</span> ok <span class="token operator">:=</span> lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token punctuation">;</span> ok <span class="token punctuation">{</span>
+        cacheNode <span class="token operator">:=</span> pElement<span class="token punctuation">.</span>Value<span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token operator">*</span>CacheNode<span class="token punctuation">)</span>
+        <span class="token function">delete</span><span class="token punctuation">(</span>lru<span class="token punctuation">.</span>cacheMap<span class="token punctuation">,</span> cacheNode<span class="token punctuation">.</span>Key<span class="token punctuation">)</span>
+        lru<span class="token punctuation">.</span>dlist<span class="token punctuation">.</span><span class="token function">Remove</span><span class="token punctuation">(</span>pElement<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
             </div>
             <hr/>
 
@@ -454,7 +560,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ouyangj.cn/gallery/index.html">http://ouyangj.cn/gallery/index.html</a>
+                    <a href="http://ouyangj.cn/2021/11/04/lru-go-shi-xian/">http://ouyangj.cn/2021/11/04/lru-go-shi-xian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -467,7 +573,7 @@
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://ouyangj.cn/gallery/index.html" target="_blank">Jiang ouyang</a>
+                    <a href="http://ouyangj.cn/2021/11/04/lru-go-shi-xian/" target="_blank">Jiang ouyang</a>
                     !
                 </span>
             </div>
@@ -491,7 +597,19 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/go/">
+                                    <span class="chip bg-color">go</span>
+                                </a>
+                            
+                                <a href="/tags/golang/">
+                                    <span class="chip bg-color">golang</span>
+                                </a>
+                            
+                                <a href="/tags/lru/">
+                                    <span class="chip bg-color">lru</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -662,34 +780,58 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/gallery/index.html">
+                <a href="/2021/11/04/lru-go-shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="gallery">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="LRU go 实现">
                         
-                        <span class="card-title">gallery</span>
+                        <span class="card-title">LRU go 实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
+本文主要介绍 LRU 的 golang 版本的实现
+
+LRU 简介首先 LRU 算法的全称是 Least Recently Used 即最近最少未使用，是一种很典型的页面置换算法，相应的还有 LFU、先进先出算法等
+LRU 实现type 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jiang ouyang
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/算法/" class="post-category">
+                                    算法
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/go/">
+                        <span class="chip bg-color">go</span>
+                    </a>
+                    
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
+                    <a href="/tags/lru/">
+                        <span class="chip bg-color">lru</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -697,16 +839,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/gallery/index.html">
+                <a href="/2021/11/04/shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="gallery">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="实现">
                         
-                        <span class="card-title">gallery</span>
+                        <span class="card-title">实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -717,7 +859,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-04
                             </span>
                         <span class="publish-author">
                             
@@ -727,7 +869,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
