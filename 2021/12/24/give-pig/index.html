@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo">
+    <meta name="keywords" content="give pig, 小江">
     <meta name="description" content="一&#34;江&#34;春水向东流">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo 的使用介绍 | 小江</title>
+    <title>give pig | 小江</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -264,12 +264,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo 的使用介绍</h1>
+                    <h1 class="description center-align post-title">give pig</h1>
                 </div>
             </div>
         </div>
@@ -386,27 +386,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                            <a href="/tags/文档/">
-                                <span class="chip bg-color">文档</span>
+                            <a href="/tags/圣诞/">
+                                <span class="chip bg-color">圣诞</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/hexo/" class="post-category">
-                                hexo
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -415,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-01-01
+                    2021-12-24
                 </div>
                 
 
@@ -424,14 +411,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    317
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -446,253 +433,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>主要介绍 Hexo 的使用和一些基本的命令操作，主题设置和一些高级配置本文没有介绍，有兴趣可以参考官方文档</p>
-<p>此文来自 Hexo 官方，为了对 Hexo 表示感谢所以把此文放在这里,更多信息参考官方文档: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-</blockquote>
-<h3 id="1-Hexo-简介"><a href="#1-Hexo-简介" class="headerlink" title="1. Hexo 简介"></a>1. Hexo 简介</h3><hr>
-<p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。大家可以进入<a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo官网</a>进行详细查看，因为Hexo的创建者是台湾人，对中文的支持很友好，可以选择中文进行查看。</p>
-<h3 id="2-快速开始"><a href="#2-快速开始" class="headerlink" title="2. 快速开始"></a>2. 快速开始</h3><p><strong>2.1 环境说明</strong></p>
-<blockquote>
-<p>环境说明：Mac + node + git + Homebrew</p>
-</blockquote>
-<p><strong>2.2 安装 Hexo</strong></p>
-<pre class=" language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli  // 安装客户端
-$ <span class="token function">npm</span> <span class="token function">install</span> hexo-server  // 安装服务端
-</code></pre>
-<p><strong>2.3 初始化Hexo</strong></p>
-<pre class=" language-bash"><code class="language-bash">$ hexo init hexo
-$ <span class="token function">cd</span> hexo
-$ <span class="token function">npm</span> <span class="token function">install</span>
-</code></pre>
-<p><strong>2.4 然后生成静态页面并打开hexo本地服务</strong></p>
-<pre class=" language-bash"><code class="language-bash">$ hexo g <span class="token operator">&amp;&amp;</span> hexo s
-</code></pre>
-<h3 id="3-一些其它命令"><a href="#3-一些其它命令" class="headerlink" title="3. 一些其它命令"></a>3. 一些其它命令</h3><hr>
-<p><strong>init</strong></p>
-<blockquote>
-<p>新建一个网站。如果没有设置 <code>folder</code> ，Hexo 默认在目前的文件夹建立网站。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo init <span class="token punctuation">[</span>folder<span class="token punctuation">]</span>
-</code></pre>
-<p><strong>new</strong></p>
-<blockquote>
-<p>新建一篇文章。如果没有设置 <code>layout</code> 的话，默认使用 <a href="https://hexo.io/zh-cn/docs/configuration" target="_blank" rel="noopener">_config.yml</a> 中的 <code>default_layout</code> 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>title<span class="token operator">></span>
-</code></pre>
-<pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"post title with whitespace"</span>
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p</code>, <code>--path</code></td>
-<td>自定义新文章的路径</td>
-</tr>
-<tr>
-<td><code>-r</code>, <code>--replace</code></td>
-<td>如果存在同名文章，将其替换</td>
-</tr>
-<tr>
-<td><code>-s</code>, <code>--slug</code></td>
-<td>文章的 Slug，作为新文章的文件名和发布后的 URL</td>
-</tr>
-</tbody>
-</table>
-<p>默认情况下，Hexo 会使用文章的标题来决定文章文件的路径。对于独立页面来说，Hexo 会创建一个以标题为名字的目录，并在目录中放置一个 <code>index.md</code> 文件。你可以使用 <code>--path</code> 参数来覆盖上述行为、自行决定文件的目录：</p>
-<pre class=" language-bash"><code class="language-bash">$ hexo new page --path about/me <span class="token string">"About me"</span>
-</code></pre>
-<p>以上命令会创建一个 <code>source/about/me.md</code> 文件，同时 Front Matter 中的 title 为 <code>&quot;About me&quot;</code></p>
-<p>注意！title 是必须指定的！如果你这么做并不能达到你的目的：</p>
-<pre class=" language-bash"><code class="language-bash">$ hexo new page --path about/me
-</code></pre>
-<p>此时 Hexo 会创建 <code>source/_posts/about/me.md</code>，同时 <code>me.md</code> 的 Front Matter 中的 title 为 <code>&quot;page&quot;</code>。这是因为在上述命令中，hexo-cli 将 <code>page</code> 视为指定文章的标题、并采用默认的 <code>layout</code>。</p>
-<p><strong>generate</strong></p>
-<blockquote>
-<p>生成静态文件</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo generate 或 hexo g
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-d</code>, <code>--deploy</code></td>
-<td>文件生成后立即部署网站</td>
-</tr>
-<tr>
-<td><code>-w</code>, <code>--watch</code></td>
-<td>监视文件变动</td>
-</tr>
-<tr>
-<td><code>-b</code>, <code>--bail</code></td>
-<td>生成过程中如果发生任何未处理的异常则抛出异常</td>
-</tr>
-<tr>
-<td><code>-f</code>, <code>--force</code></td>
-<td>强制重新生成文件 Hexo 引入了差分机制，如果 <code>public</code> 目录存在，那么 <code>hexo g</code> 只会重新生成改动的文件。 使用该参数的效果接近 <code>hexo clean &amp;&amp; hexo generate</code></td>
-</tr>
-<tr>
-<td><code>-c</code>, <code>--concurrency</code></td>
-<td>最大同时生成文件的数量，默认无限制</td>
-</tr>
-</tbody>
-</table>
-<p><strong>publish</strong></p>
-<blockquote>
-<p>发表草稿</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo publish <span class="token punctuation">[</span>layout<span class="token punctuation">]</span> <span class="token operator">&lt;</span>filename<span class="token operator">></span>
-</code></pre>
-<p><strong>server</strong></p>
-<blockquote>
-<p>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code>。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p</code>, <code>--port</code></td>
-<td>重设端口</td>
-</tr>
-<tr>
-<td><code>-s</code>, <code>--static</code></td>
-<td>只使用静态文件</td>
-</tr>
-<tr>
-<td><code>-l</code>, <code>--log</code></td>
-<td>启动日记记录，使用覆盖记录格式</td>
-</tr>
-</tbody>
-</table>
-<p><strong>deploy</strong></p>
-<blockquote>
-<p>部署网站。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo deploy 或 hexo d
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-g</code>, <code>--generate</code></td>
-<td>部署之前预先生成静态文件</td>
-</tr>
-</tbody>
-</table>
-<p><strong>render</strong></p>
-<blockquote>
-<p>渲染文件</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo render <span class="token operator">&lt;</span>file1<span class="token operator">></span> <span class="token punctuation">[</span>file2<span class="token punctuation">]</span> <span class="token punctuation">..</span>.
-</code></pre>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-o</code>, <code>--output</code></td>
-<td>设置输出路径</td>
-</tr>
-</tbody>
-</table>
-<p><strong>migrate</strong></p>
-<blockquote>
-<p>从其他博客系统 <a href="https://hexo.io/zh-cn/docs/migration" target="_blank" rel="noopener">迁移内容</a>。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo migrate <span class="token operator">&lt;</span>type<span class="token operator">></span>
-</code></pre>
-<p><strong>clean</strong></p>
-<blockquote>
-<p>清除缓存文件 (<code>db.json</code>) 和已生成的静态文件 (<code>public</code>)。</p>
-<p>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo clean
-</code></pre>
-<p><strong>list</strong></p>
-<blockquote>
-<p>列出网站资料</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo list <span class="token operator">&lt;</span>type<span class="token operator">></span>
-</code></pre>
-<p><strong>version</strong></p>
-<blockquote>
-<p>显示 Hexo 版本</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo version
-</code></pre>
-<h3 id="4-命令可选项"><a href="#4-命令可选项" class="headerlink" title="4. 命令可选项"></a>4. 命令可选项</h3><p><strong>安全模式</strong></p>
-<blockquote>
-<p>在安全模式下，不会载入插件和脚本。当您在安装新插件遭遇问题时，可以尝试以安全模式重新执行</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo --safe
-</code></pre>
-<p><strong>调试模式</strong></p>
-<blockquote>
-<p>在终端中显示调试信息并记录到 <code>debug.log</code>。当您碰到问题时，可以尝试用调试模式重新执行一次，并 <a href="https://github.com/hexojs/hexo/issues/new" target="_blank" rel="noopener">提交调试信息到 GitHub</a></p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo --debug
-</code></pre>
-<p><strong>简洁模式</strong></p>
-<blockquote>
-<p>隐藏终端信息</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo --silent
-</code></pre>
-<p><strong>自定义配置文件的路径</strong></p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 custom.yml 代替默认的 _config.yml</span>
-$ hexo server --config custom.yml
+                <p>&lt;!doctype html&gt;</p>
+<html><br><head><br><meta charset="utf-8"><br><title>给远方的猪</title><br><br><br><style type="text/css"><br>  @charset “utf-8”;<br><em> {<br>  box-sizing: border-box;<br>}<br>body {<br>  background: #233343;<br>   background-image:url(2.jpeg  );<br>  min-height: 100vh;<br>  display: flex;<br>  align-items: center;<br>  justify-content: center;<br>  perspective: 1200px;<br>  transform-style: preserve-3d;<br>}<br>.tree {<br>  position: relative;<br>  height: 50vmin;<br>  width: 25vmin;<br>  transform-style: preserve-3d;<br>  -webkit-animation: spin 2s infinite linear;<br>  animation: spin 2s infinite linear;<br>}<br>.tree__light {<br>  transform-style: preserve-3d;<br>  position: absolute;<br>  height: 1vmin;<br>  width: 1vmin;<br>  border-radius: 50%;<br>  -webkit-animation: flash calc(var(–speed) </em> 1s) calc(var(–delay) <em> 1s) infinite steps(4), appear 0.5s calc(var(–appear) </em> 0.05s) both;<br>          animation: flash calc(var(–speed) <em> 1s) calc(var(–delay) </em> 1s) infinite steps(4), appear 0.5s calc(var(–appear) <em> 0.05s) both;<br>  left: 50%;<br>  transform: translate(-50%, 50%) rotateY(calc(var(–rotate, 0) </em> 1deg)) translate3d(0, 0, calc(var(–radius, 0) <em> 1vmin));<br>  bottom: calc(var(–y, 0) </em> 1%);<br>}<br>.tree<strong>star {<br>  stroke-width: 5vmin;<br>  stroke: #f5e0a3;<br>  filter: drop-shadow(0 0 2vmin #fcf1cf);<br>  height: 5vmin;<br>  width: 5vmin;<br>  overflow: visible !important;<br>  bottom: 100%;<br>  left: 50%;<br>  transform: translate(-50%, 0);<br>  position: absolute;<br>  stroke-dasharray: 1000 1000;<br>  fill: none;<br>  -webkit-animation: stroke 1s calc((var(–delay) <em> 0.95) </em> 0.05s) both;<br>          animation: stroke 1s calc((var(–delay) <em> 0.95) </em> 0.05s) both;<br>}<br>.wall {<br>  clear:both;<br>  color: red;<br>}<br>#footer1 {<br>  float: left;<br>  width:100px;<br>  height:100px;<br>  border:1px #F00 ;<br>}<br><br>@-webkit-keyframes stroke {<br>  from {<br>​    stroke-dashoffset: -1000;<br>  }<br>}<br>@keyframes stroke {<br>  from {<br>​    stroke-dashoffset: -1000;<br>  }<br>}<br>@-webkit-keyframes spin {<br>  to {<br>​    transform: rotateY(360deg);<br>  }<br>}<br>@keyframes spin {<br>  to {<br>​    transform: rotateY(360deg);<br>  }<br>}<br>@-webkit-keyframes appear {<br>  from {<br>​    opacity: 0;<br>  }<br>}<br>@keyframes appear {<br>  from {<br>​    opacity: 0;<br>  }<br>}<br>@-webkit-keyframes flash {<br>  0%, 100% {<br>​    background: #4f60f6;<br>  }<br>  20% {<br>​    background: #f64f4f;<br>  }<br>  40% {<br>​    background: #4fecf6;<br>  }<br>  60% {<br>​    background: #f6db4f;<br>  }<br>  80% {<br>​    background: #f64fe5;<br>  }<br>}<br>@keyframes flash {<br>  0%, 100% {<br>​    background: #4f60f6;<br>  }<br>  20% {<br>​    background: #f64f4f;<br>  }<br>  40% {<br>​    background: #4fecf6;<br>  }<br>  60% {<br>​    background: #f6db4f;<br>  }<br>  80% {<br>​    background: #f64fe5;<br>  }<br>}<br></style><br><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><br><body background="http://rte.weiyun.baidu.com/api/imageDownloadAddress?attachId=c9e465fe2dc839de372023aabce6608a"><br>​    <!-- <audio autoplay="autoplay" loop="loop" preload="auto"
+​              src="https://music.163.com/song?id=29759371&userid=5171933254">
+​          你的浏览器版本太低，不支持audio标签
+  </audio> --><br>  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="0%" height="0" src="https://music.163.com/outchain/player?type=2&id=1384026889&userid=5171933254&auto=1&height=66"><br><br>  </iframe><br><!-- <bgsound src="https://music.163.com/song?id=29759371&userid=5171933254" autostart=true loop=infinite>  --><br><br><div class="tree"><br>  &lt;div class=”treelight” style=”–appear: 0; –y: 0; –rotate: 1440; –radius: 12.5; –speed: 6.400434662074517; –delay: -5.729518378221366;”&gt;</div><br>  <div class="tree__light" style="--appear: 1; --y: 2; --rotate: 1411.2; --radius: 12.25; --speed: 8.289118880758405; --delay: -9.821339538073875;"></div><br>  <div class="tree__light" style="--appear: 2; --y: 4; --rotate: 1382.4; --radius: 12; --speed: 2.762214438568402; --delay: -9.82553991641267;"></div><br>  <div class="tree__light" style="--appear: 3; --y: 6; --rotate: 1353.6000000000001; --radius: 11.75; --speed: 5.2169599789222705; --delay: -1.146313414741591;"></div><br>  <div class="tree__light" style="--appear: 4; --y: 8; --rotate: 1324.8; --radius: 11.5; --speed: 8.665042244953177; --delay: -2.232614726172797;"></div><br>  <div class="tree__light" style="--appear: 5; --y: 10; --rotate: 1296; --radius: 11.25; --speed: 6.1841290939752; --delay: -3.2948672174559213;"></div><br>  <div class="tree__light" style="--appear: 6; --y: 12; --rotate: 1267.2; --radius: 11; --speed: 0.2386221851841408; --delay: -0.1565400802638761;"></div><br>  <div class="tree__light" style="--appear: 7; --y: 14; --rotate: 1238.4; --radius: 10.75; --speed: 3.4180669002414676; --delay: -1.108204498301666;"></div><br>  <div class="tree__light" style="--appear: 8; --y: 16; --rotate: 1209.6000000000001; --radius: 10.5; --speed: 4.495713975214219; --delay: -7.16630082687522;"></div><br>  <div class="tree__light" style="--appear: 9; --y: 18; --rotate: 1180.8; --radius: 10.25; --speed: 2.050188705878939; --delay: -8.897558901485858;"></div><br>  <div class="tree__light" style="--appear: 10; --y: 20; --rotate: 1152; --radius: 10; --speed: 0.879341071588815; --delay: -1.372285887568998;"></div><br>  <div class="tree__light" style="--appear: 11; --y: 22; --rotate: 1123.2; --radius: 9.75; --speed: 6.529368844448258; --delay: -5.810729343334522;"></div><br>  <div class="tree__light" style="--appear: 12; --y: 24; --rotate: 1094.4; --radius: 9.5; --speed: 5.980504355359351; --delay: -8.0343744180381;"></div><br>  <div class="tree__light" style="--appear: 13; --y: 26; --rotate: 1065.6000000000001; --radius: 9.25; --speed: 3.730059917047488; --delay: -6.6048171919530745;"></div><br>  <div class="tree__light" style="--appear: 14; --y: 28; --rotate: 1036.8; --radius: 9; --speed: 8.447176433821193; --delay: -2.930795225206919;"></div><br>  <div class="tree__light" style="--appear: 15; --y: 30; --rotate: 1008; --radius: 8.75; --speed: 2.8356860377165605; --delay: -4.288005150545953;"></div><br>  <div class="tree__light" style="--appear: 16; --y: 32; --rotate: 979.2; --radius: 8.5; --speed: 4.901932888595965; --delay: -7.760337395934407;"></div><br>  <div class="tree__light" style="--appear: 17; --y: 34; --rotate: 950.4; --radius: 8.25; --speed: 2.4410718943359044; --delay: -1.6426251216499121;"></div><br>  <div class="tree__light" style="--appear: 18; --y: 36; --rotate: 921.6; --radius: 8; --speed: 2.0493973792725373; --delay: -9.01034351819967;"></div><br>  <div class="tree__light" style="--appear: 19; --y: 38; --rotate: 892.8000000000001; --radius: 7.75; --speed: 4.090147886483462; --delay: -0.789389136081029;"></div><br>  <div class="tree__light" style="--appear: 20; --y: 40; --rotate: 864; --radius: 7.5; --speed: 1.3590459446093006; --delay: -9.876738535965146;"></div><br>  <div class="tree__light" style="--appear: 21; --y: 42; --rotate: 835.2; --radius: 7.25; --speed: 9.50349709646419; --delay: -0.2852392609827459;"></div><br>  <div class="tree__light" style="--appear: 22; --y: 44; --rotate: 806.4; --radius: 7; --speed: 3.0721768487078704; --delay: -4.567820117936774;"></div><br>  <div class="tree__light" style="--appear: 23; --y: 46; --rotate: 777.6; --radius: 6.75; --speed: 0.49456860352296017; --delay: -0.1164418214056262;"></div><br>  <div class="tree__light" style="--appear: 24; --y: 48; --rotate: 748.8000000000001; --radius: 6.5; --speed: 4.655998318405867; --delay: -8.80328724436508;"></div><br>  <div class="tree__light" style="--appear: 25; --y: 50; --rotate: 720; --radius: 6.25; --speed: 6.13195185823562; --delay: -7.575161141790594;"></div><br>  <div class="tree__light" style="--appear: 26; --y: 52; --rotate: 691.2; --radius: 6; --speed: 4.358165499421438; --delay: -9.247144771643343;"></div><br>  <div class="tree__light" style="--appear: 27; --y: 54; --rotate: 662.4; --radius: 5.75; --speed: 0.05097926779642714; --delay: -8.691745044020614;"></div><br>  <div class="tree__light" style="--appear: 28; --y: 56; --rotate: 633.6; --radius: 5.5; --speed: 8.742641210620313; --delay: -6.5295280902741855;"></div><br>  <div class="tree__light" style="--appear: 29; --y: 58; --rotate: 604.8000000000001; --radius: 5.25; --speed: 5.80185251364155; --delay: -7.609251669692513;"></div><br>  <div class="tree__light" style="--appear: 30; --y: 60; --rotate: 576; --radius: 5; --speed: 7.467315091727784; --delay: -8.634544168186384;"></div><br>  <div class="tree__light" style="--appear: 31; --y: 62; --rotate: 547.2; --radius: 4.75; --speed: 4.266345571182885; --delay: -5.264029758958855;"></div><br>  <div class="tree__light" style="--appear: 32; --y: 64; --rotate: 518.4; --radius: 4.5; --speed: 9.045502005126004; --delay: -2.690996107144532;"></div><br>  <div class="tree__light" style="--appear: 33; --y: 66; --rotate: 489.6; --radius: 4.25; --speed: 8.157526793190122; --delay: -7.994804794945352;"></div><br>  <div class="tree__light" style="--appear: 34; --y: 68; --rotate: 460.8; --radius: 4; --speed: 9.713885657603182; --delay: -3.1004172346881154;"></div><br>  <div class="tree__light" style="--appear: 35; --y: 70; --rotate: 432; --radius: 3.75; --speed: 2.4675983602710794; --delay: -6.147402437252795;"></div><br>  <div class="tree__light" style="--appear: 36; --y: 72; --rotate: 403.2; --radius: 3.5; --speed: 6.334757806600053; --delay: -4.68726311130985;"></div><br>  <div class="tree__light" style="--appear: 37; --y: 74; --rotate: 374.40000000000003; --radius: 3.25; --speed: 5.810077494998955; --delay: -0.5421184684789382;"></div><br>  <div class="tree__light" style="--appear: 38; --y: 76; --rotate: 345.6; --radius: 3; --speed: 3.1348261661348698; --delay: -1.8762379030616438;"></div><br>  <div class="tree__light" style="--appear: 39; --y: 78; --rotate: 316.8; --radius: 2.75; --speed: 1.7539981598254406; --delay: -0.39031038560793707;"></div><br>  <div class="tree__light" style="--appear: 40; --y: 80; --rotate: 288; --radius: 2.5; --speed: 2.5539355188740087; --delay: -4.450657635233652;"></div><br>  <div class="tree__light" style="--appear: 41; --y: 82; --rotate: 259.2; --radius: 2.25; --speed: 2.3603559140315844; --delay: -9.410370278145297;"></div><br>  <div class="tree__light" style="--appear: 42; --y: 84; --rotate: 230.4; --radius: 2; --speed: 3.3112783371999055; --delay: -0.7523735956343902;"></div><br>  <div class="tree__light" style="--appear: 43; --y: 86; --rotate: 201.6; --radius: 1.75; --speed: 1.7060416013304724; --delay: -9.109653019612438;"></div><br>  <div class="tree__light" style="--appear: 44; --y: 88; --rotate: 172.8; --radius: 1.5; --speed: 6.344643090661945; --delay: -6.583050358454807;"></div><br>  <div class="tree__light" style="--appear: 45; --y: 90; --rotate: 144; --radius: 1.25; --speed: 1.7389609219137059; --delay: -7.326224146231651;"></div><br>  <div class="tree__light" style="--appear: 46; --y: 92; --rotate: 115.2; --radius: 1; --speed: 8.606030099788386; --delay: -1.8678573148711752;"></div><br>  <div class="tree__light" style="--appear: 47; --y: 94; --rotate: 86.4; --radius: 0.75; --speed: 9.49674248980797; --delay: -3.592334423342276;"></div><br>  <div class="tree__light" style="--appear: 48; --y: 96; --rotate: 57.6; --radius: 0.5; --speed: 0.6238837869676761; --delay: -9.031351447299665;"></div><br>  <div class="tree__light" style="--appear: 49; --y: 98; --rotate: 28.8; --radius: 0.25; --speed: 0.25891891876878903; --delay: -3.4291538146903444;"></div><br>  <svg class="tree__star" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 113.32 108.44" style="--delay: 50"><br/>    <path d="M90.19 104.33L57.12 87.38 24.4 105l5.91-36.69L3.44 42.65l36.72-5.72 16.1-33.5L73.06 36.6l36.83 4.97-26.35 26.21z" fill="none" stroke-width="6.88" stroke-linecap="round" stroke-linejoin="round"/><br/>  </svg><br><br><br><!-- <div class="wall" id="footer">
+​    Merry Christmas To Pig
+  </div> --><br>  <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fi-1.lanrentuku.com%2F2020%2F8%2F28%2F3e82b49a-0adc-4d3d-aef5-3018881f0ac7.jpg%3FimageView2%2F2%2Fw%2F500%2F&refer=http%3A%2F%2Fi-1.lanrentuku.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1642948998&t=07b43e24f513e40fbda23e19e73267d0" class="tree__star"><br></body><br><br></html>
 
-<span class="token comment" spellcheck="true"># 使用 custom.yml 和 custom2.json，其中 custom2.json 优先级更高</span>
-$ hexo generate --config custom.yml,custom2.json,custom3.yml
-</code></pre>
-<p>自定义配置文件的路径，指定这个参数后将不再使用默认的 <code>_config.yml</code>。<br>你可以使用一个 YAML 或 JSON 文件的路径，也可以使用逗号分隔（无空格）的多个 YAML 或 JSON 文件的路径。例如：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 使用 custom.yml 代替默认的 _config.yml</span>
-$ hexo server --config custom.yml
 
-<span class="token comment" spellcheck="true"># 使用 custom.yml, custom2.json 和 custom3.yml，其中 custom3.yml 优先级最高，其次是 custom2.json</span>
-$ hexo generate --config custom.yml,custom2.json,custom3.yml
-</code></pre>
-<p>当你指定了多个配置文件以后，Hexo 会按顺序将这部分配置文件合并成一个 <code>_multiconfig.yml</code>。如果遇到重复的配置，排在后面的文件的配置会覆盖排在前面的文件的配置。这个原则适用于任意数量、任意深度的 YAML 和 JSON 文件。</p>
-<p><strong>显示草稿</strong></p>
-<blockquote>
-<p>显示 <code>source/_drafts</code> 文件夹中的草稿文章</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo --draft
-</code></pre>
-<p><strong>自定义 CWD</strong></p>
-<blockquote>
-<p>自定义当前工作目录（Current working directory）的路径。</p>
-</blockquote>
-<pre class=" language-bash"><code class="language-bash">$ hexo --cwd /path/to/cwd
-</code></pre>
 
             </div>
             <hr/>
@@ -718,7 +467,7 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ouyangj.cn/2018/01/01/hexo-de-ji-ben-shi-yong/">http://ouyangj.cn/2018/01/01/hexo-de-ji-ben-shi-yong/</a>
+                    <a href="http://ouyangj.cn/2021/12/24/give-pig/">http://ouyangj.cn/2021/12/24/give-pig/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -731,7 +480,7 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                     本博客所有文章除特別声明外，均采用
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     许可协议。转载请注明来源
-                    <a href="http://ouyangj.cn/2018/01/01/hexo-de-ji-ben-shi-yong/" target="_blank">Jiang ouyang</a>
+                    <a href="http://ouyangj.cn/2021/12/24/give-pig/" target="_blank">Jiang ouyang</a>
                     !
                 </span>
             </div>
@@ -756,12 +505,8 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
-                                </a>
-                            
-                                <a href="/tags/文档/">
-                                    <span class="chip bg-color">文档</span>
+                                <a href="/tags/圣诞/">
+                                    <span class="chip bg-color">圣诞</span>
                                 </a>
                             
                         </div>
@@ -1192,29 +937,31 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/01/02/test/">
+                <a href="/2021/12/24/give-pig/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="give pig">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">give pig</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            这是显示在首页的概述，正文内容均会被隐藏。
+                            &lt;!doctype html&gt;
+给远方的猪  @charset “utf-8”; {  box-sizing: border-box;}body {  background: #233343;   background-imag
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2018-01-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1223,11 +970,12 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/test/">
-                        <span class="chip bg-color">test</span>
+                    <a href="/tags/圣诞/">
+                        <span class="chip bg-color">圣诞</span>
                     </a>
                     
                 </div>
@@ -1238,27 +986,32 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/01/01/hexo-de-ji-ben-shi-yong/">
+                <a href="/2021/11/05/hexo-matery-zhu-ti-shi-yong/">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="hexo matery 主题使用">
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Hexo 的使用介绍">
-                        
-                        <span class="card-title">Hexo 的使用介绍</span>
+                        <span class="card-title">hexo matery 主题使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简单介绍 Hexo 的使用
+                            hexo 主题使用看一个 demo
+---
+title: typora-vue-theme主题介绍
+date: 2018-09-07 09:25:00
+author: 赵奇
+img: /source/images/xxx.jpg
+top: 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-05
                             </span>
                         <span class="publish-author">
                             
@@ -1272,7 +1025,6 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1280,8 +1032,8 @@ $ hexo generate --config custom.yml,custom2.json,custom3.yml
                         <span class="chip bg-color">hexo</span>
                     </a>
                     
-                    <a href="/tags/文档/">
-                        <span class="chip bg-color">文档</span>
+                    <a href="/tags/主题/">
+                        <span class="chip bg-color">主题</span>
                     </a>
                     
                 </div>
